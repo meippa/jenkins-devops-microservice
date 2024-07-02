@@ -37,4 +37,15 @@ pipeline {
 		}
 	}
 }
+post {
+	always {
+		echo 'Im runnning'
+	}
+	success {
+		echo 'Im runnning & Success'
+	}
+	failure {
+		echo 'Im runnning but fail'
+	}
+}
 }
