@@ -21,24 +21,33 @@ pipeline {
 	agent any
 	//agent { docker { image 'maven:3.6.3'}}
 	stages {
-		stage('Build') {
+		stage('Checkout') {
 			steps {
-			   //sh 'mvn --version'
+			   sh 'mvn --version'
+			   sh 'docker version'
           	   echo "Build"
 			   echo "$PATH"
-			   echo "BUILD NUMBER - $env.BRANCH_NAME"
-			   echo "BUILD NUMBER - $env.NODE_NAME"
+			   echo "BUILD NUMBER - $env.BUILD_NUMBER"
+			   echo "NODE NAME - $env.NODE_NAME"
 		}
 		
 	}
-		stage('Test') {
+		stage('Compile') {
 			steps {
-          	  echo "Test"
+          	  //echo "Test"
+			  sh "mvn clean compile"
 		}
 	}
-		stage('IntegrationTest') {
+		stage('Test') {
 			steps {
-           		echo "IntegrationTest"
+           		//echo "IntegrationTest"
+				sh "mvn test"
+		}
+	}
+	stage('IntegrationTest') {
+			steps {
+           		//echo "IntegrationTest"
+				sh "mvn failsafe:integration-test failsafe:verify"
 		}
 	}
 }
