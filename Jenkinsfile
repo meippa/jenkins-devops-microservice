@@ -27,6 +27,7 @@ pipeline {
           	   echo "Build"
 			   echo "$PATH"
 			   echo "BUILD NUMBER - $env.BRANCH_NAME"
+			   echo "BUILD NUMBER - $env.NODE_NAME"
 		}
 		
 	}
