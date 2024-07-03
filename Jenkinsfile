@@ -15,10 +15,10 @@
 // echo "IntegrationTest"
 // }
 
-tools{
-	maven 'Maven 3.9.8'
-	jdk 'jdk8'
-}
+// tools{
+// 	maven 'Maven 3.9.8'
+// 	jdk 'jdk8'
+// }
 
 //Declarative Pipeline
 pipeline {
